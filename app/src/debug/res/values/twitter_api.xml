@@ -1,0 +1,10 @@
+<resources>
+    <!-- コンシューマキー-->
+    <string name="twitter_consumar_key">
+        BX789FP59lGrXM5IkSnzr63sd
+    </string>
+    <!-- コンシューマシークレット-->
+    <string name="twitter_consumar_secret">
+        Dw4Mcfvtup65S7ohshvUOzkkfcC6yeoFsN25dh8ZBYYQkqtyWV
+    </string>
+</resources>
