@@ -7,4 +7,7 @@
     <string name="twitter_consumar_secret">
         Dw4Mcfvtup65S7ohshvUOzkkfcC6yeoFsN25dh8ZBYYQkqtyWV
     </string>
+    <string name="twitter_callback_url">
+        cda://twitter
+    </string>
 </resources>

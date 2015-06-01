@@ -10,20 +10,23 @@ import java.util.Iterator;
 import java.util.List;
 
 import jp.sample.mapsandtweets.MapsActivity;
-import jp.sample.mapsandtweets.R;
+import jp.sample.mapsandtweets.util.TwitterUtil;
 import twitter4j.GeoLocation;
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
 
 /**
  */
 public class SearchTweetsAsyncTask extends AsyncTask<LatLng, Void, List<Status>> {
     Activity mActivity;
 
+    /**
+     * コンストラクタ
+     * @param activity  結果を返すための呼び出し元のActivity
+     */
     public SearchTweetsAsyncTask(Activity activity){
         mActivity = activity;
     }
@@ -35,11 +38,13 @@ public class SearchTweetsAsyncTask extends AsyncTask<LatLng, Void, List<Status>>
      */
     @Override
     protected List<twitter4j.Status> doInBackground(LatLng... params) {
+        //返却するツイート情報のリスト
         List<twitter4j.Status> statuses = new ArrayList<twitter4j.Status>();
+        //検索条件となる起点の位置情報
         LatLng location = params[0];
 
         //Twitterインスタンの生成
-        Twitter twitter = new TwitterFactory().getInstance();
+        Twitter twitter = TwitterUtil.getTwitterInstance(mActivity);
 
         //検索用のクエリを生成
         Query query = new Query();
@@ -84,7 +89,7 @@ public class SearchTweetsAsyncTask extends AsyncTask<LatLng, Void, List<Status>>
         //TODO ホントはInterfaceを整備したいがサンプルのため割愛
         if(mActivity instanceof MapsActivity){
             //非同期処理の結果をActivityへ渡す
-            ((MapsActivity)mActivity).callback(statuses);
+            ((MapsActivity)mActivity).protMarkers(statuses);
         }
     }
 }

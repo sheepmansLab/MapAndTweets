@@ -21,7 +21,7 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <!-- 取得したAPIキーを指定してる。debug/release配下のgoogle_maps_api.xmlにAPIを記述-->
+        <!-- 取得したAPIキーを指定してる。debug/release配下のgoogle_maps_api.xmlにAPIを記述 -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_key" />
@@ -31,9 +31,21 @@
             android:label="@string/title_activity_maps" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
-                <data android:host="twitter" android:scheme="cda"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TwitterAuthActivity"
+            android:label="@string/title_activity_twitter_auth"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- cda://twitterを認識させる-->
+                <data
+                    android:host="twitter"
+                    android:scheme="cda" />
             </intent-filter>
         </activity>
     </application>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Develop\AndroidStudio\mapandtweets\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\libs\internal_impl-22.1.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
+        <dex dex="C:\Develop\AndroidStudio\mapandtweets\app\build\intermediates\pre-dexed\debug\internal_impl-22.1.1-59149a2926c2ecac62e97aa58c8ab5f253647907.jar" />
+    </item>
+    <item
+        jar="C:\Develop\AndroidStudio\mapandtweets\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
+        <dex dex="C:\Develop\AndroidStudio\mapandtweets\app\build\intermediates\pre-dexed\debug\classes-c879a1780efd15041f8d8f272aacf95d45f10509.jar" />
+    </item>
+    <item
+        jar="C:\Develop\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\22.1.1\support-annotations-22.1.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+        <dex dex="C:\Develop\AndroidStudio\mapandtweets\app\build\intermediates\pre-dexed\debug\support-annotations-22.1.1-dd0efa8c99b2c53cc87af9485d1e455194e13ffe.jar" />
+    </item>
+    <item
+        jar="C:\Develop\AndroidStudio\mapandtweets\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\4.2.42\jars\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e5f81129dfb3d02df80126512bc98278ed2bb40a">
+        <dex dex="C:\Develop\AndroidStudio\mapandtweets\app\build\intermediates\pre-dexed\debug\classes-52fde7f06f537c5184a3c9f7da97e0c0c377255f.jar" />
+    </item>
+    <item
+        jar="C:\Develop\AndroidStudio\mapandtweets\app\libs\twitter4j-core-4.0.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="cb244e5be126bf0a8114c8a64a5d26c6490b9ef2">
+        <dex dex="C:\Develop\AndroidStudio\mapandtweets\app\build\intermediates\pre-dexed\debug\twitter4j-core-4.0.3-947a84c067cedac4d37e6003e24db53f0658bb45.jar" />
+    </item>
+    <item
+        jar="C:\Develop\AndroidStudio\mapandtweets\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
+        <dex dex="C:\Develop\AndroidStudio\mapandtweets\app\build\intermediates\pre-dexed\debug\classes-d680142784d3624e36c5270aaf511d0356c9444a.jar" />
+    </item>
+
+</items>

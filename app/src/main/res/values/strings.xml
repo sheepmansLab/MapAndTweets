@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">MapsAndTweets</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_twitter_auth">TwitterAuthActivity</string>
+
+    <string name="label_btn_search">検索</string>
+    <string name="label_btn_auth">Twitter認証</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

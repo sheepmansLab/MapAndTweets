@@ -7,15 +7,11 @@ import jp.sample.mapsandtweets.R;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
-import twitter4j.auth.OAuthAuthorization;
 
 /**
  *
  */
 public class TwitterUtil {
-    private static OAuthAuthorization mOAuth;
-    private static Twitter mTwitter;
-
     private static final String TOKEN = "token";
     private static final String TOKEN_SECRET = "token_secret";
     private static final String PREF_NAME = "twitter_access_token";
