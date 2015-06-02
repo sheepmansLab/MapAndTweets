@@ -5,11 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import jp.sample.mapsandtweets.util.CommonConst;
 import jp.sample.mapsandtweets.util.TwitterUtil;
@@ -18,7 +15,9 @@ import twitter4j.TwitterException;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
-
+/**
+ * Twitter認証用のActivity
+ */
 public class TwitterAuthActivity extends Activity {
     Twitter mTwitter;
     RequestToken mRequestToken;
@@ -29,6 +28,8 @@ public class TwitterAuthActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_twitter_auth);
 
+        //認証開始のボタン
+        //TODO 本来自動的にリダイレクトさせたいが無限ループしてしまうのでボタンを介している
         Button btnAuthStart = (Button)findViewById(R.id.btnAuthStart);
         btnAuthStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,7 @@ public class TwitterAuthActivity extends Activity {
                     @Override
                     protected String doInBackground(Void... voids) {
                         try {
+                            //リクエストトークンを取得し認証画面のURLを返す
                             mRequestToken = mTwitter.getOAuthRequestToken(callbackUrl);
                             return mRequestToken.getAuthorizationURL();
                         } catch (TwitterException e) {
@@ -50,11 +52,12 @@ public class TwitterAuthActivity extends Activity {
 
                     @Override
                     protected void onPostExecute(String s) {
-                        super.onPostExecute(s);
-                        //取得したリクエストトークンからURLを取得し、コールバックURLを指定して遷移
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
-                        //画面遷移
-                        startActivity(intent);
+                        if(s != null) {
+                            //取得したリクエストトークンからURLを取得し、コールバックURLを指定して遷移
+                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
+                            //認証画面(Twitterのサービス)へ遷移
+                            startActivity(intent);
+                        }
                     }
                 }.execute();
             }
@@ -63,19 +66,23 @@ public class TwitterAuthActivity extends Activity {
 
     /**
      * 別画面(Twitter認証画面)から遷移してきた際に呼び出される
+     * Manifest.xmlにSingleTaskを設定していないと呼ばれない
      * @param intent    Intent
      */
     @Override
     protected void onNewIntent(Intent intent) {
         //データがない、意図しないアクセスの場合はスルーする
-        if(intent == null
-                || intent.getData() == null
-                || !intent.getData().toString().startsWith("cda://twitter")){
-            return;
-        } else {
+        if(intent != null
+                && intent.getData() != null
+                && intent.getData().toString().startsWith("cda://twitter")){
             //認証データを保持させる
             String verifier = intent.getData().getQueryParameter("oauth_verifier");
             new AsyncTask<String, Void, AccessToken>() {
+                /**
+                 * 非同期処理で認証情報を取得する
+                 * @param strings   oauth_verifier
+                 * @return  アクセストークン
+                 */
                 @Override
                 protected AccessToken doInBackground(String... strings) {
                     try {
@@ -87,6 +94,10 @@ public class TwitterAuthActivity extends Activity {
                     return null;
                 }
 
+                /**
+                 * 事後処理
+                 * @param accessToken   doInBackgroundの結果
+                 */
                 @Override
                 protected void onPostExecute(AccessToken accessToken) {
                     super.onPostExecute(accessToken);

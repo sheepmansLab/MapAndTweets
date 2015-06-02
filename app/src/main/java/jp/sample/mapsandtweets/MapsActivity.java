@@ -32,7 +32,7 @@ public class MapsActivity extends FragmentActivity{
 
     /**
      * Activityが作成された際に呼ばれる
-     * @param savedInstanceState
+     * @param savedInstanceState 画面情報を保持するBundle
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,7 @@ public class MapsActivity extends FragmentActivity{
             btnMapSearch.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //TODO タッチした位置をベースに検索しているので、Mapの中心位置を検索対象にしたい
                     //検索処理 ネットワーク接続する場合は非同期処理にする必要がある
                     new SearchTweetsAsyncTask(MapsActivity.this).execute(mLocation);
                 }
@@ -105,9 +106,10 @@ public class MapsActivity extends FragmentActivity{
 
     /**
      * 指定した座標に表示を移動させる
-     * @param location
+     * @param location  位置情報LatLng
      */
     private void moveCamera(LatLng location){
+        //TODO ズームや傾きなどがリセットされてしまうので画面情報を保持したい
         float zoom = 15.0f;     //拡大
         float bearing = 0.0f;   //向き
         float tilt = 0.0f;      //傾き
@@ -147,8 +149,11 @@ public class MapsActivity extends FragmentActivity{
                                         ,status.getGeoLocation().getLongitude());
                 //Mapにマーカーをセット
                 Marker marker = mMap.addMarker(new MarkerOptions().position(pos));
-                //タイトルに名前をセット
-                marker.setTitle(status.getUser().getScreenName());
+                //タイトルに表示名、ユーザ名、作成日付をセット
+                //TODO 日付の表示形式は面倒なのでそのまま
+                marker.setTitle(status.getUser().getName()
+                        + "(@" + status.getUser().getScreenName() +')'
+                        + " " + status.getCreatedAt());
                 //スニペットにメッセージをセット
                 marker.setSnippet(status.getText());
                 //アイコン画像をDLしてアイコンにセットする
